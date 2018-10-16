@@ -1,0 +1,28 @@
+{% extends 'myapp/master.html' %}
+{% block title %}MyCart{% endblock %}
+{% block body %}
+
+ <div class="row">
+ {% for i in orders %}
+    <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+    <img src="{{ i.o_id.mimg }}" alt="Sandwich" style="width:100%">
+    <div class="caption">
+    <h1>DISH:{{ i.o_id.mtitle }}</h1>
+     <p>quantity:{{ i.o_qt }}</p>
+     <h4>Price: {{ i.pay }}</h4>
+        <center><p><a href="{% url "myapp:cartdeletepage" i.id %}" class="btn btn-primary" role="button">
+         <span class="glyphicon glyphicon-trash" > Delete
+         </span></a>
+        </p></center>
+     </div>
+    </div>
+  </div>
+ {% endfor %}
+ </div>
+    <center>
+    <h1>Total(inclusive of GST @18%) :<b>{{pay}}</b></h1>
+        <p><a href="{% url 'myapp:pay' %}" class="btn btn-primary" role="button">
+         <span class="glyphicon glyphicon-ok" > Confirm
+         </span></a></center>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'myapp/master.html' %}
+{%block title  %}Locations{% endblock %}
+{% block body %}
+    {% if user %}
+    {% block user %}{{ user }}{% endblock %}
+    {% endif %}
+    {% if number %}
+    {% block number %}{{ number}}{% endblock %}
+    {% endif %}
+
+    <div class="row">
+
+{% for i in location %}
+    <div class="col-xs-6 col-md-4">
+    <div class="jumbotron">
+  <h1><a href="/home/{{ i.id }}">{{ i.R_loc }}</a> </h1><br>
+  <p>Enjoy the vibrant dishes of{{ i.R_loc  }}</p>
+  <p><a class="btn btn-primary btn-lg" href="/home/{{ i.id }}"
+        role="button">Resturants</a></p>
+</div></div>
+ {% endfor %}
+
+    </div>
+{% endblock %}

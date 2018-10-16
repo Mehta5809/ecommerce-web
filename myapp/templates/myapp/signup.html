@@ -1,0 +1,23 @@
+{% extends 'myapp/master.html' %}
+{% block title %}signup{% endblock %}
+{% block body %}
+
+
+   <center>
+
+
+      <div class="thumbnail" style="background-color: ghostwhite">
+      <img src="http://trak.in/wp-content/uploads/2010/12/Khana-Khazaana.jpg" class="w3-circle" alt="Norway">
+      <form method="post" action="" enctype="multipart/form-data">
+       {% csrf_token %}
+
+       {% for el in form %}
+        <span >{{ el.errors }}</span>
+        <label ><h3 style="background-color: aquamarine">{{ el.label_tag }}{{ el }}</h3></label>
+
+        <br>
+        {% endfor %}
+        <input type="submit" value="signup" style="width: 150px; background-color: lime; padding-left: 8px; padding-top: 8px; padding-bottom: 8px; height: 30px">
+        </form>
+      </div></center>
+{% endblock %}}

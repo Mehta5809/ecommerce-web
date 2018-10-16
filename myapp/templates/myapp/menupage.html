@@ -1,0 +1,39 @@
+{% extends 'myapp/master.html' %}
+{% block title %}{{ menusample.Rname }}{% endblock %}
+  {% if user %}
+    {% block user %}{{ user }}{% endblock %}
+    {% endif %}
+    {% if number %}
+    {% block number %}{{ number}}{% endblock %}
+    {% endif %}
+
+{% block body %}
+    <div class="row">
+    {% for i in menusample.menu_set.all %}
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <a href="/home/rpage/order/{{ i.id }}" class="thumbnail">
+      <img src="{{ i.mimg }}" alt="Sandwich" style="width:100%">
+  </a>
+      <div class="caption">
+        <h1>DISH:{{ i.mtitle }}</h1>
+     <p>Category:{{ i.mcatg }}</p>
+     <h4>Price: {{ i.mprice }}</h4>
+     <p><a href="/home/rpage/order/{{ i.id }}" class="btn btn-primary" role="button">order</a>
+     </p>
+      </div>
+    </div>
+  </div>
+   {% endfor %}
+</div>
+ <!-- About Section -->
+  <div class="w3-container w3-padding-32 w3-center">
+    <h3>About Me, The Food Man</h3><br>
+    <img src="{{ menusample.Rimg }}" alt="Me" class="w3-image" style="display:block;margin:auto"  height="100">
+    <div class="w3-padding-32">
+      <h4><b>{{ menusample.Rname }}</b></h4>
+      <h6><i>With Passion For Real, Good Food</i></h6>
+      <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+    </div>
+  </div>
+{% endblock %}

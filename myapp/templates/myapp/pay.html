@@ -1,0 +1,32 @@
+{% extends 'myapp/master.html' %}
+{% block title %}Payment{% endblock %}
+{% block body %}
+  <form action="{% url 'myapp:pay' %}" method="post">
+   {% csrf_token %}
+      <div class="form-group">
+    <label for="address1">house number/street</label>
+    <input type="text" class="form-control" id="address1" placeholder="address1" name="address1">
+  </div>
+  <div class="form-group">
+    <label for="address2">City/District</label>
+    <input type="text" class="form-control" id="address2" placeholder="address2" name="address2">
+  </div>
+
+        <input type="radio" id="pay{{ forloop.counter }}" name="pay" value="cod">
+        <label for="pay{{ forloop.counter }}">
+            COD
+        </label></br>
+        <input type="radio" id="pay{{ forloop.counter }}" name="pay" value="card">
+        <label for="pay{{ forloop.counter }}">
+            Payment Gateway
+        </label></br>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+    <div style="background-color:#7ceab3" class="jumbotron">
+  <h1><span class="glyphicon glyphicon-cutlery">Khana Khazana</span> </h1>
+  <h6><i>With Passion For Real, Good Food</i></h6>
+      <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+
+  </div>
+{% endblock %}

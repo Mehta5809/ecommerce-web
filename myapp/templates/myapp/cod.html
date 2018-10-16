@@ -1,0 +1,11 @@
+{% extends 'myapp/master.html' %}
+{% block title %}Recipt{% endblock %}
+{% block body %}
+    <h1>Thank You For Using Khana Khazana</h1>
+    <h2>Address:{{ add }}</h2>
+    <center><p><a href="{% url "myapp:home"%}" class="btn btn-primary" role="button">
+         <span class="glyphicon glyphicon-home" > home
+         </span></a>
+        </p></center>
+
+{% endblock %}

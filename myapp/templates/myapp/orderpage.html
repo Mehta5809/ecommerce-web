@@ -1,0 +1,38 @@
+{% extends 'myapp/master.html' %}
+{% block title %}order{% endblock %}
+{% block body %}
+  {% if user %}
+    {% block user %}{{ user }}{% endblock %}
+    {% endif %}
+    {% if number %}
+    {% block number %}{{ number}}{% endblock %}
+    {% endif %}
+
+ <div class="row">
+ <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+    <img src="{{ menu.mimg }}" alt="Sandwich" style="width:100%">
+    <div class="caption">
+    <h1>DISH:{{ menu.mtitle }}</h1>
+     <p>Category:{{ menu.mcatg }}</p>
+     <h4>Price: {{ menu.mprice }}</h4>
+     </div>
+    </div>
+  </div>
+ </div>
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for el in form %}
+        <span >{{ el.errors }}</span>
+        <label>{{ el.label_tag }}</label>
+        {{ el }}
+        <br>
+    {% endfor %}
+<input type="submit" value="order">
+</form>
+    {% if status %}
+    <h2>order done wana repeat a order </h2>
+     {% else %}
+    <h2>place a order</h2>
+    {% endif %}
+{% endblock %}
